@@ -7,7 +7,8 @@ If you start the app, letters of a word fall down to the ground.
 please touch the name of color with correct order.
 enjoy!
 
-
+Please, click the image below to see the youtube video of the app running. 
+Thanks!
   
 [![ScreenShot](https://dl.dropboxusercontent.com/u/12654818/github/DynamicColorName.png)](http://youtu.be/aNksiUG2ZGY)
   

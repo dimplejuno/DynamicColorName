@@ -48,6 +48,8 @@
     }
     
     [letters removeAllObjects];
+    [letterPositions removeAllObjects];
+    [answerString setString:@""];
     
     [self makeCharArrayOfWord];
     [self applyDynamics];
@@ -132,7 +134,19 @@
 }
 
 
+- (void) checkResult
+{
+    if([selectedColorName isEqualToString:answerString]) {
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Dynamic Color" message:@"Correct!!" delegate:self cancelButtonTitle:@"New" otherButtonTitles:@"Cancel", nil];
+        [alert show];
+    } else {
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Dynamic Color" message:@"Wrong!!" delegate:self cancelButtonTitle:@"New" otherButtonTitles:@"Cancel", nil];
+        [alert show];
+    }
 
+}
 
 -(void)handleTapGesture:(UITapGestureRecognizer*)gesture
 {
@@ -163,17 +177,8 @@
     selectedIndex++;
     
     if(selectedIndex == selectedColorName.length) {
-        NSLog(@"Check!!");
-        if([selectedColorName isEqualToString:answerString]) {
-            NSLog(@"Correct!!");
-            
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Dynamic Color" message:@"Correct!!" delegate:self cancelButtonTitle:@"New" otherButtonTitles:@"Cancel", nil];
-            [alert show];
-        } else {
-            NSLog(@"Wrong!!");
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Dynamic Color" message:@"Wrong!!" delegate:self cancelButtonTitle:@"New" otherButtonTitles:@"Cancel", nil];
-            [alert show];
-        }
+        
+        [self performSelector:@selector(checkResult) withObject:nil afterDelay:2.0f];
         
     }
     
@@ -207,7 +212,7 @@
     
     selectedColorName = [[word componentsSeparatedByString:@" #"] objectAtIndex:0];
     
-    NSInteger deltaX = ((int)self.view.frame.size.height) / (selectedColorName.length + 1);
+    NSInteger deltaX = ((int)self.view.frame.size.width) / (selectedColorName.length + 1);
     
     for(int i=0; i<selectedColorName.length; i++) {
         
@@ -215,7 +220,12 @@
         range.location = i;
         range.length = 1;
         
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(arc4random()%(int)(self.view.frame.size.width - 60) + 30 + arc4random()%30, 60, 30, 30)];
+        float minX = 30; //Get the current text from your minimum and maximum textfields.
+        float maxX = self.view.frame.size.width - 30;
+        
+        int randX = arc4random() % (int)((maxX - minX) + minX);
+        
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(randX, 60, 30, 30)];
         view.backgroundColor = selectedColor;
         
         // 이미지를 원형으로...
@@ -293,13 +303,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self makeCharArrayOfWord];
+    
     
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [self makeCharArrayOfWord];
     [self applyDynamics];
 }
 

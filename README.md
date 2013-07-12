@@ -9,7 +9,7 @@ enjoy!
 
 
   
-[![ScreenShot](http://youtu.be/aNksiUG2ZGY)](http://youtu.be/aNksiUG2ZGY)
+[![ScreenShot](https://www.dropbox.com/s/dt4tfowqi6q5c76/DynamicColorName.png)](http://youtu.be/aNksiUG2ZGY)
   
 Requirements
 ------------

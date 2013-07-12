@@ -9,7 +9,7 @@ enjoy!
 
 
   
-[![ScreenShot](https://www.dropbox.com/s/dt4tfowqi6q5c76/DynamicColorName.png)](http://youtu.be/aNksiUG2ZGY)
+[![ScreenShot](https://dl.dropboxusercontent.com/u/12654818/github/DynamicColorName.png)](http://youtu.be/aNksiUG2ZGY)
   
 Requirements
 ------------
